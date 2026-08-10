@@ -13,11 +13,12 @@ type Figurine = {
 
 /* positioned along the lace line, running down toward the tongue */
 const FIGURINES: Figurine[] = [
-  { left: "46%", top: "22%", drop: "220px", size: 46, rot: "-12deg", delay: "0s" },
-  { left: "50%", top: "31%", drop: "260px", size: 38, rot: "8deg", delay: "0.7s" },
-  { left: "54%", top: "40%", drop: "240px", size: 42, rot: "-4deg", delay: "1.4s" },
-  { left: "58%", top: "49%", drop: "280px", size: 34, rot: "14deg", delay: "2.1s" },
-  { left: "62%", top: "57%", drop: "300px", size: 30, rot: "-9deg", delay: "2.8s" },
+  { left: "41%", top: "27%", drop: "220px", size: 44, rot: "-14deg", delay: "0s" },
+  { left: "46%", top: "34%", drop: "250px", size: 40, rot: "6deg", delay: "0.7s" },
+  { left: "50%", top: "41%", drop: "230px", size: 44, rot: "-6deg", delay: "1.4s" },
+  { left: "55%", top: "48%", drop: "270px", size: 38, rot: "12deg", delay: "2.1s" },
+  { left: "59%", top: "55%", drop: "290px", size: 34, rot: "-10deg", delay: "2.8s" },
+
 ];
 
 export function Hero() {
