@@ -1,17 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
-import { Features } from "@/components/site/Features";
-import { Archive } from "@/components/site/Archive";
-import { Fabricator } from "@/components/site/Fabricator";
-import { Process } from "@/components/site/Process";
-import { Manifesto } from "@/components/site/Manifesto";
+import { Shop } from "@/components/site/Shop";
+import { CustomBuild } from "@/components/site/CustomBuild";
+import { About } from "@/components/site/About";
 import { Footer } from "@/components/site/Footer";
-import { CustomCursor } from "@/components/site/primitives";
 
-const title = "NAME — 3D-Printed Sneaker Armor, Made to Order";
+const title = "NAME — 3D-Printed Shoe Attachments, Made to Order";
 const description =
-  "NAME designs and 3D-prints custom shoe mods: sculptural lace-to-tongue armor, printed on demand in nylon, resin, or titanium composite.";
+  "NAME 3D-prints small sculptural attachments for the front of your sneakers. One-of-one pieces, printed to order.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -30,15 +27,12 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-screen bg-background">
-      <CustomCursor />
       <Nav />
       <main>
         <Hero />
-        <Features />
-        <Archive />
-        <Fabricator />
-        <Process />
-        <Manifesto />
+        <Shop />
+        <CustomBuild />
+        <About />
       </main>
       <Footer />
     </div>
