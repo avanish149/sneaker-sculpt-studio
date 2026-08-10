@@ -1,42 +1,53 @@
-import { Plate, Reveal } from "./primitives";
+import { Reveal } from "./primitives";
+import shoeImg from "@/assets/hero-shoe.png";
+import figurineImg from "@/assets/figurine.png";
 
 type Figurine = {
   left: string;
   top: string;
   drop: string;
   size: number;
+  rot: string;
   delay: string;
 };
 
+/* positioned along the lace line, running down toward the tongue */
 const FIGURINES: Figurine[] = [
-  { left: "48%", top: "26%", drop: "120px", size: 26, delay: "0s" },
-  { left: "43%", top: "24%", drop: "150px", size: 18, delay: "0.5s" },
-  { left: "54%", top: "23%", drop: "165px", size: 20, delay: "0.9s" },
-  { left: "46%", top: "22%", drop: "195px", size: 14, delay: "1.4s" },
-  { left: "52%", top: "25%", drop: "210px", size: 16, delay: "1.9s" },
+  { left: "41%", top: "27%", drop: "220px", size: 44, rot: "-14deg", delay: "0s" },
+  { left: "46%", top: "34%", drop: "250px", size: 40, rot: "6deg", delay: "0.7s" },
+  { left: "50%", top: "41%", drop: "230px", size: 44, rot: "-6deg", delay: "1.4s" },
+  { left: "55%", top: "48%", drop: "270px", size: 38, rot: "12deg", delay: "2.1s" },
+  { left: "59%", top: "55%", drop: "290px", size: 34, rot: "-10deg", delay: "2.8s" },
+
 ];
 
 export function Hero() {
   return (
     <section id="top" className="px-5 pt-32 md:px-10 md:pt-40">
       <div className="mx-auto max-w-3xl">
-        <div className="relative">
-          <Plate
-            ratio="aspect-[4/3]"
-            caption="SHOE RENDER — clean studio shot, front-facing"
+        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-surface">
+          <img
+            src={shoeImg}
+            alt="White sneaker with 3D-printed sculptural attachments along the laces"
+            width={1024}
+            height={1024}
+            className="absolute inset-0 h-full w-full object-contain"
           />
           <div aria-hidden className="pointer-events-none absolute inset-0">
             {FIGURINES.map((f, i) => (
-              <span
+              <img
                 key={i}
+                src={figurineImg}
+                alt=""
+                loading="lazy"
                 className="figurine absolute"
                 style={
                   {
                     left: f.left,
                     top: f.top,
                     width: f.size,
-                    height: f.size * 1.4,
                     "--drop": f.drop,
+                    "--rot": f.rot,
                     "--delay": f.delay,
                   } as React.CSSProperties
                 }
@@ -44,6 +55,7 @@ export function Hero() {
             ))}
           </div>
         </div>
+
 
         <div className="mt-16 text-center">
           <Reveal>
