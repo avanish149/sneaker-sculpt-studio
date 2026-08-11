@@ -1,22 +1,25 @@
+import { Link } from "@tanstack/react-router";
+
 export function Footer() {
   return (
     <footer className="border-t border-border px-5 py-14 md:px-10">
       <div className="mx-auto flex max-w-6xl flex-col gap-10 md:flex-row md:items-center md:justify-between">
-        <span className="text-sm font-medium uppercase tracking-[0.2em]">NAME</span>
+        <span className="text-sm font-medium uppercase tracking-[0.24em]">NAME</span>
 
-        <div className="flex gap-6">
+        <div className="flex flex-wrap gap-6">
           {[
-            ["Shop", "#shop"],
-            ["Custom", "#custom"],
-            ["About", "#about"],
-          ].map(([label, href]) => (
-            <a
+            ["Shop", "/shop"],
+            ["Custom", "/custom"],
+            ["About", "/about"],
+            ["Contact", "/contact"],
+          ].map(([label, to]) => (
+            <Link
               key={label}
-              href={href}
+              to={to}
               className="text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
             >
               {label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -28,7 +31,7 @@ export function Footer() {
             id="signup"
             type="email"
             placeholder="Email"
-            className="w-48 rounded-full border border-border bg-surface px-4 py-2 text-sm outline-none transition-colors duration-150 focus:border-primary"
+            className="w-44 rounded-full border border-border bg-surface px-4 py-2 text-sm outline-none transition-colors duration-150 focus:border-primary"
           />
           <button
             type="submit"
