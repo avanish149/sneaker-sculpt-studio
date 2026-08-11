@@ -32,8 +32,8 @@ export function ShoeViewer({ pinned }: { pinned?: number | null }) {
 
   const rotate = (dir: number) => setAngle((a) => (a + dir + ANGLES.length) % ANGLES.length);
 
-  const view = ANGLES[angle];
-  const design = DESIGNS[active];
+  const view = ANGLES[angle]!;
+  const design = DESIGNS[active]!;
 
   return (
     <div className="w-full select-none">

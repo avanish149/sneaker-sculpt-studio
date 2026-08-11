@@ -7,12 +7,12 @@ export function Footer() {
         <span className="text-sm font-medium uppercase tracking-[0.24em]">NAME</span>
 
         <div className="flex flex-wrap gap-6">
-          {[
+          {([
             ["Shop", "/shop"],
             ["Custom", "/custom"],
             ["About", "/about"],
             ["Contact", "/contact"],
-          ].map(([label, to]) => (
+          ] as const).map(([label, to]) => (
             <Link
               key={label}
               to={to}
