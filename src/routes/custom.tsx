@@ -1,19 +1,40 @@
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Chip, Reveal } from "./primitives";
+import { Chip, Reveal } from "@/components/site/primitives";
 
 const STYLES = ["Minimal", "Half coverage", "Full coverage"];
 const FINISHES = ["Chrome", "Matte black", "Raw nylon"];
 
-export function CustomBuild() {
+const title = "Custom Build — NAME";
+const description = "Send a photo of your pair and we design and print a one-of-one piece for it.";
+
+export const Route = createFileRoute("/custom")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: Custom,
+});
+
+const field =
+  "mt-3 w-full rounded-md border border-border bg-surface px-4 py-3 text-sm outline-none transition-colors duration-150 focus:border-primary";
+
+function Custom() {
   const [style, setStyle] = useState(STYLES[0]);
   const [finish, setFinish] = useState(FINISHES[0]);
   const [sent, setSent] = useState(false);
 
   return (
-    <section id="custom" className="border-y border-border px-5 py-32 md:px-10">
+    <section className="px-5 py-16 md:px-10">
       <div className="mx-auto max-w-xl">
         <Reveal>
-          <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">Custom build</h2>
+          <h1 className="text-4xl font-medium tracking-tight sm:text-5xl">Custom build</h1>
           <p className="mt-4 text-muted-foreground">
             Send us your pair. We design and print a one-of-one piece for it.
           </p>
@@ -66,22 +87,13 @@ export function CustomBuild() {
                 <label htmlFor="name" className="text-sm text-muted-foreground">
                   Name
                 </label>
-                <input
-                  id="name"
-                  required
-                  className="mt-3 w-full rounded-md border border-border bg-surface px-4 py-3 text-sm outline-none transition-colors duration-150 focus:border-primary"
-                />
+                <input id="name" required className={field} />
               </div>
               <div>
                 <label htmlFor="email" className="text-sm text-muted-foreground">
                   Email
                 </label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  className="mt-3 w-full rounded-md border border-border bg-surface px-4 py-3 text-sm outline-none transition-colors duration-150 focus:border-primary"
-                />
+                <input id="email" type="email" required className={field} />
               </div>
             </div>
 
