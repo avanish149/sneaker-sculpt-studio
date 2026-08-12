@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { SlideOutNav } from "@/components/site/SlideOutNav";
+
 
 const LINKS = [
   { to: "/", label: "Home" },
