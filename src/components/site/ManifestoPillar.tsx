@@ -62,6 +62,31 @@ export function CinematicBreak({ src, alt }: { src: string; alt: string }) {
   );
 }
 
+export function Triptych({ panels }: { panels: { src: string; alt: string; caption?: string }[] }) {
+  return (
+    <div className="grid w-full grid-cols-1 border-y border-border sm:grid-cols-3">
+      {panels.map((p) => (
+        <figure
+          key={p.alt}
+          className="pedestal relative aspect-[4/5] overflow-hidden border-border bg-surface sm:border-r sm:last:border-r-0"
+        >
+          <img
+            src={p.src}
+            alt={p.alt}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-contain p-10 transition-transform duration-500 ease-out hover:scale-[1.04]"
+          />
+          {p.caption && (
+            <figcaption className="absolute inset-x-0 bottom-0 p-4 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+              {p.caption}
+            </figcaption>
+          )}
+        </figure>
+      ))}
+    </div>
+  );
+}
+
 export function Key({ children }: { children: ReactNode }) {
   return <strong className="font-medium text-foreground">{children}</strong>;
 }

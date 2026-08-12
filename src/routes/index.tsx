@@ -1,6 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ShoeViewer } from "@/components/site/ShoeViewer";
 import { Reveal } from "@/components/site/primitives";
+import { Triptych } from "@/components/site/ManifestoPillar";
+import d1 from "@/assets/design-1.png";
+import shoe2 from "@/assets/shoe-2.png";
+import d3 from "@/assets/design-3.png";
 
 const title = "NAME — Snap-On 3D-Printed Shoe Attachments";
 const description =
@@ -22,7 +26,8 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <section className="px-5 pb-28 pt-10 md:px-10">
+    <>
+    <section className="px-5 pb-20 pt-10 md:px-10">
       <div className="mx-auto max-w-3xl">
         <ShoeViewer pinned={null} />
 
@@ -57,5 +62,14 @@ function Home() {
         </div>
       </div>
     </section>
+
+    <Triptych
+      panels={[
+        { src: d1, alt: "[PLACEHOLDER DESIGN 1 — detail]", caption: "01 / Clip" },
+        { src: shoe2, alt: "[SHOE RENDER — side view]", caption: "02 / Fit" },
+        { src: d3, alt: "[PLACEHOLDER DESIGN 3 — detail]", caption: "03 / Swap" },
+      ]}
+    />
+    </>
   );
 }
