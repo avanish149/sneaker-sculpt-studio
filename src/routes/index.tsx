@@ -62,5 +62,14 @@ function Home() {
         </div>
       </div>
     </section>
+
+    <Triptych
+      panels={[
+        { src: d1, alt: "[PLACEHOLDER DESIGN 1 — detail]", caption: "01 / Clip" },
+        { src: shoe2, alt: "[SHOE RENDER — side view]", caption: "02 / Fit" },
+        { src: d3, alt: "[PLACEHOLDER DESIGN 3 — detail]", caption: "03 / Swap" },
+      ]}
+    />
+    </>
   );
 }
