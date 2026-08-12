@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { SlideOutNav } from "@/components/site/SlideOutNav";
+
 
 const LINKS = [
   { to: "/", label: "Home" },
@@ -12,11 +14,15 @@ export function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 md:px-10">
-        <Link to="/" className="text-sm font-medium uppercase tracking-[0.24em]">
-          NAME
-        </Link>
+        <div className="flex items-center gap-3">
+          <SlideOutNav />
+          <Link to="/" className="text-sm font-medium uppercase tracking-[0.24em]">
+            NAME
+          </Link>
+        </div>
         <div className="flex items-center gap-4 overflow-x-auto sm:gap-7">
           {LINKS.map((l) => (
+
             <Link
               key={l.to}
               to={l.to}

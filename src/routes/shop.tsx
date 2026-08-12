@@ -44,18 +44,37 @@ function Shop() {
                   className="w-full text-left transition-transform duration-200 ease-out hover:-translate-y-1"
                 >
                   <div className="pedestal relative aspect-square overflow-hidden rounded-xl border border-border bg-surface">
+                    {d.status && (
+                      <span
+                        className={
+                          "absolute left-3 top-3 z-10 rounded-full border px-3 py-1 text-[10px] uppercase tracking-[0.18em] " +
+                          (d.status === "sold"
+                            ? "border-border bg-background/70 text-muted-foreground"
+                            : "border-primary bg-primary text-primary-foreground")
+                        }
+                      >
+                        {d.status === "sold" ? "Sold out" : "Coming soon"}
+                      </span>
+                    )}
                     <img
                       src={d.img}
                       alt={d.label}
                       loading="lazy"
                       width={512}
                       height={512}
-                      className="absolute inset-0 h-full w-full object-contain p-8 drop-shadow-[0_18px_28px_rgba(0,0,0,0.55)]"
+                      className={
+                        "absolute inset-0 h-full w-full object-contain p-8 drop-shadow-[0_18px_28px_rgba(0,0,0,0.55)] " +
+                        (d.status === "sold" ? "opacity-40 grayscale" : "")
+                      }
                     />
                   </div>
                   <div className="mt-4 flex items-baseline justify-between">
-                    <h2 className="text-base">{d.name}</h2>
-                    <span className="text-sm text-muted-foreground">{d.price}</span>
+                    <h2 className={d.status === "sold" ? "text-base text-muted-foreground" : "text-base"}>
+                      {d.name}
+                    </h2>
+                    <span className="text-sm text-muted-foreground">
+                      {d.status === "sold" ? "Sold out" : d.price}
+                    </span>
                   </div>
                   <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">
                     {d.material}
@@ -63,6 +82,7 @@ function Shop() {
                 </button>
               </Reveal>
             ))}
+
           </div>
 
           <aside className="lg:sticky lg:top-28 lg:self-start">
