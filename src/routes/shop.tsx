@@ -68,17 +68,22 @@ function Shop() {
                       }
                     />
                   </div>
-                  <div className="mt-4 flex items-baseline justify-between">
-                    <h2 className={d.status === "sold" ? "text-base text-muted-foreground" : "text-base"}>
-                      {d.name}
-                    </h2>
+                  <p
+                    className={
+                      "mt-4 text-[11px] uppercase tracking-[0.14em] " +
+                      (d.status === "sold" ? "text-muted-foreground" : "text-foreground")
+                    }
+                  >
+                    {d.code}
+                  </p>
+                  <div className="mt-1 flex items-baseline justify-between">
+                    <span className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
+                      {d.material}
+                    </span>
                     <span className="text-sm text-muted-foreground">
                       {d.status === "sold" ? "Sold out" : d.price}
                     </span>
                   </div>
-                  <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">
-                    {d.material}
-                  </p>
                 </button>
               </Reveal>
             ))}
