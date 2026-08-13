@@ -3,6 +3,8 @@ import { useState } from "react";
 import { DESIGNS } from "@/lib/designs";
 import { Reveal } from "@/components/site/primitives";
 import { ShoeViewer } from "@/components/site/ShoeViewer";
+import { useCart } from "@/lib/cart";
+
 
 const title = "Shop — NAME Clip-On Shoe Attachments";
 const description =
