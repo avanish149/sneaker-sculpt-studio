@@ -24,6 +24,8 @@ export const Route = createFileRoute("/shop")({
 
 function Shop() {
   const [pinned, setPinned] = useState<number | null>(null);
+  const { add, setOpen } = useCart();
+
 
   return (
     <section className="px-5 py-16 md:px-10">
