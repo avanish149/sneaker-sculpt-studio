@@ -62,7 +62,7 @@ export function ShoeViewer({ pinned }: { pinned?: number | null }) {
             alt={`[SHOE RENDER — ${view.label} view]`}
             width={1024}
             height={1024}
-            className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.6)]"
+            className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.18)]"
           />
           <img
             key={`${design.id}-${angle}`}
