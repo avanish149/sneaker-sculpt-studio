@@ -36,28 +36,29 @@
 
 :root {
   --radius: 6px;
-  --background: oklch(0.16 0 0);
-  --foreground: oklch(0.97 0 0);
-  --surface: oklch(0.21 0 0);
-  --card: oklch(0.21 0 0);
-  --card-foreground: oklch(0.97 0 0);
-  --popover: oklch(0.21 0 0);
-  --popover-foreground: oklch(0.97 0 0);
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.18 0 0);
+  --surface: oklch(0.965 0 0);
+  --card: oklch(0.975 0 0);
+  --card-foreground: oklch(0.18 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0 0);
   /* single accent: electric blue */
-  --primary: oklch(0.68 0.19 254);
-  --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.26 0 0);
-  --secondary-foreground: oklch(0.95 0 0);
-  --muted: oklch(0.26 0 0);
-  --muted-foreground: oklch(0.68 0 0);
-  --accent: oklch(0.68 0.19 254);
-  --accent-foreground: oklch(0.98 0 0);
-  --destructive: oklch(0.62 0.21 27);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.3 0 0);
-  --input: oklch(0.3 0 0);
-  --ring: oklch(0.68 0.19 254);
+  --primary: oklch(0.55 0.2 258);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.94 0 0);
+  --secondary-foreground: oklch(0.22 0 0);
+  --muted: oklch(0.94 0 0);
+  --muted-foreground: oklch(0.48 0 0);
+  --accent: oklch(0.55 0.2 258);
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.58 0.21 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.9 0 0);
+  --input: oklch(0.9 0 0);
+  --ring: oklch(0.55 0.2 258);
 }
+
 
 @layer base {
   * {
@@ -114,14 +115,15 @@
 }
 @utility attach-drop {
   animation: attach-drop 3200ms cubic-bezier(0.22, 1.2, 0.36, 1) both;
-  filter: drop-shadow(0 12px 18px oklch(0 0 0 / 0.6));
+  filter: drop-shadow(0 12px 18px oklch(0 0 0 / 0.25));
 }
 
 @utility pedestal {
   background:
-    radial-gradient(60% 55% at 50% 42%, oklch(0.68 0.19 254 / 0.16) 0%, transparent 70%),
-    radial-gradient(50% 20% at 50% 88%, oklch(1 0 0 / 0.10) 0%, transparent 75%);
+    radial-gradient(60% 55% at 50% 42%, oklch(0.55 0.2 258 / 0.1) 0%, transparent 70%),
+    radial-gradient(50% 20% at 50% 88%, oklch(0 0 0 / 0.06) 0%, transparent 75%);
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   *,
