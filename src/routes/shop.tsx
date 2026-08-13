@@ -26,7 +26,7 @@ export const Route = createFileRoute("/shop")({
 
 function Shop() {
   const [pinned, setPinned] = useState<number | null>(null);
-  const { add, setOpen } = useCart();
+  const { add, setOpen, lines, setQty } = useCart();
 
 
   return (
