@@ -2,19 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { Search, ShoppingBag, X } from "lucide-react";
 import { SlideOutNav } from "@/components/site/SlideOutNav";
-
-const LINKS = [
-  { to: "/", label: "Home" },
-  { to: "/shop", label: "Shop" },
-  { to: "/custom", label: "Custom" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
-] as const;
+import { useCart } from "@/lib/cart";
 
 export function Nav() {
   const [search, setSearch] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+  const { count, setOpen } = useCart();
 
   useEffect(() => {
     if (!search) return;
@@ -47,31 +41,21 @@ export function Nav() {
           >
             {search ? <X className="h-4 w-4" /> : <Search className="h-4 w-4" />}
           </button>
-          <Link
-            to="/contact"
-            aria-label="Cart"
-            className="rounded-md p-2 text-muted-foreground transition-colors duration-150 hover:text-foreground"
+          <button
+            type="button"
+            aria-label={`Cart (${count} items)`}
+            onClick={() => setOpen(true)}
+            className="relative rounded-md p-2 text-muted-foreground transition-colors duration-150 hover:text-foreground"
           >
             <ShoppingBag className="h-4 w-4" />
-          </Link>
+            {count > 0 && (
+              <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-medium text-primary-foreground">
+                {count}
+              </span>
+            )}
+          </button>
         </div>
       </nav>
-
-      <div className="border-t border-border/40">
-        <div className="mx-auto flex max-w-6xl items-center gap-4 overflow-x-auto px-5 py-2.5 md:justify-center md:px-10 md:gap-8">
-          {LINKS.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              activeOptions={{ exact: l.to === "/" }}
-              className="shrink-0 border-b-2 border-transparent pb-0.5 text-xs uppercase tracking-[0.18em] text-muted-foreground transition-colors duration-150 hover:text-foreground"
-              activeProps={{ className: "!text-foreground !border-primary" }}
-            >
-              {l.label}
-            </Link>
-          ))}
-        </div>
-      </div>
 
       <div
         className={`overflow-hidden border-t border-border/40 bg-surface/60 transition-[max-height,opacity] duration-200 ease-out ${
