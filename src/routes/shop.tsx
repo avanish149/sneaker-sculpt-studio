@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { Minus, Plus } from "lucide-react";
 import { DESIGNS } from "@/lib/designs";
 import { Reveal } from "@/components/site/primitives";
 import { ShoeViewer } from "@/components/site/ShoeViewer";
@@ -26,7 +27,7 @@ export const Route = createFileRoute("/shop")({
 
 function Shop() {
   const [pinned, setPinned] = useState<number | null>(null);
-  const { add, setOpen } = useCart();
+  const { add, setOpen, lines, setQty } = useCart();
 
 
   return (
@@ -91,17 +92,45 @@ function Shop() {
                     </div>
                   </button>
 
-                  <button
-                    type="button"
-                    disabled={d.status === "sold"}
-                    onClick={() => {
-                      add(d);
-                      setOpen(true);
-                    }}
-                    className="mt-3 w-full rounded-md border border-border px-4 py-2.5 text-[11px] uppercase tracking-[0.2em] text-foreground transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-border disabled:hover:text-foreground"
-                  >
-                    {d.status === "sold" ? "Unavailable" : "Add to cart"}
-                  </button>
+                  {(() => {
+                    const line = lines.find((l) => l.id === d.id);
+                    if (line && d.status !== "sold") {
+                      return (
+                        <div className="mt-3 flex w-full items-center justify-between rounded-md border border-border px-2 py-1.5">
+                          <button
+                            type="button"
+                            aria-label={`Decrease ${d.name} quantity`}
+                            onClick={() => setQty(d.id, line.qty - 1)}
+                            className="rounded p-2 text-muted-foreground transition-colors hover:text-primary"
+                          >
+                            <Minus className="h-3.5 w-3.5" />
+                          </button>
+                          <span className="text-[11px] uppercase tracking-[0.2em]">{line.qty}</span>
+                          <button
+                            type="button"
+                            aria-label={`Increase ${d.name} quantity`}
+                            onClick={() => setQty(d.id, line.qty + 1)}
+                            className="rounded p-2 text-muted-foreground transition-colors hover:text-primary"
+                          >
+                            <Plus className="h-3.5 w-3.5" />
+                          </button>
+                        </div>
+                      );
+                    }
+                    return (
+                      <button
+                        type="button"
+                        disabled={d.status === "sold"}
+                        onClick={() => {
+                          add(d);
+                          setOpen(true);
+                        }}
+                        className="mt-3 w-full rounded-md border border-border px-4 py-2.5 text-[11px] uppercase tracking-[0.2em] text-foreground transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-border disabled:hover:text-foreground"
+                      >
+                        {d.status === "sold" ? "Unavailable" : "Add to cart"}
+                      </button>
+                    );
+                  })()}
                 </div>
               </Reveal>
             ))}
