@@ -32,6 +32,7 @@
   --font-sans: "Archivo", system-ui, sans-serif;
   --font-mono: "Archivo", system-ui, sans-serif;
   --font-display: "Archivo", system-ui, sans-serif;
+  --font-story: "Instrument Serif", "Iowan Old Style", Georgia, serif;
 }
 
 :root {
@@ -118,6 +119,25 @@
 @utility attach-drop {
   animation: attach-drop 3200ms cubic-bezier(0.22, 1.2, 0.36, 1) both;
   filter: drop-shadow(0 12px 18px oklch(0 0 0 / 0.25));
+}
+
+@utility story-serif {
+  font-family: var(--font-story);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+@utility story-drop {
+  &::first-letter {
+    font-family: var(--font-story);
+    float: left;
+    font-size: 3.6em;
+    line-height: 0.82;
+    padding-right: 0.09em;
+    padding-top: 0.06em;
+    color: var(--primary);
+  }
 }
 
 @utility pedestal {
