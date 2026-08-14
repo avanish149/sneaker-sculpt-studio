@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ShoeViewer } from "@/components/site/ShoeViewer";
+import { HeroImage } from "@/components/site/HeroImage";
 import { Reveal } from "@/components/site/primitives";
 import { Triptych } from "@/components/site/ManifestoPillar";
+
 import d1 from "@/assets/design-1.png";
 import shoe2 from "@/assets/shoe-2.png";
 import d3 from "@/assets/design-3.png";
