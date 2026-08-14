@@ -29,8 +29,9 @@ function Home() {
   return (
     <>
     <section className="px-5 pb-20 pt-10 md:px-10">
-      <div className="mx-auto max-w-3xl">
-        <ShoeViewer pinned={null} />
+      <div className="mx-auto max-w-5xl">
+        <HeroImage />
+
 
         <div className="mt-14 text-center">
           <Reveal>
