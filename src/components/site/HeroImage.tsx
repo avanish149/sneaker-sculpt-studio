@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import hero from "@/assets/hero-mountain.jpg";
 
-export function HeroImage() {
+export function HeroImage({ children }: { children?: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
 
@@ -13,9 +13,8 @@ export function HeroImage() {
       if (!el) return;
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight || 1;
-      // -1 (below viewport) .. 1 (above viewport)
       const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
-      setOffset(Math.max(-1, Math.min(1, progress)));
+      setOffset(Math.max(-1.2, Math.min(1.2, progress)));
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -33,21 +32,25 @@ export function HeroImage() {
   return (
     <div
       ref={ref}
-      className="relative w-full overflow-hidden rounded-2xl"
-      style={{ aspectRatio: "16 / 10" }}
+      className="relative w-full overflow-hidden"
+      style={{ height: "min(92vh, 900px)" }}
     >
       <img
         src={hero}
         alt="Person wearing white sneakers on a mountain ridge at golden hour"
         width={1600}
         height={1104}
-        className="absolute left-0 h-[128%] w-full object-cover will-change-transform"
+        className="absolute left-0 h-[130%] w-full object-cover will-change-transform"
         style={{
-          top: "-14%",
-          transform: `translate3d(0, ${offset * 12}%, 0) scale(${1 + Math.abs(offset) * 0.04})`,
+          top: "-15%",
+          transform: `translate3d(0, ${offset * 14}%, 0) scale(${1 + Math.abs(offset) * 0.05})`,
         }}
       />
-      <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-border" />
+      {children ? (
+        <div className="absolute inset-0 flex items-end justify-center bg-linear-to-t from-black/45 via-black/10 to-transparent">
+          <div className="w-full px-5 pb-12 md:px-10 md:pb-16">{children}</div>
+        </div>
+      ) : null}
     </div>
   );
 }

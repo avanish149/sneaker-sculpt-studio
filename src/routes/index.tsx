@@ -28,19 +28,16 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <>
-    <section className="px-5 pb-20 pt-10 md:px-10">
-      <div className="mx-auto max-w-5xl">
-        <HeroImage />
-
-
-        <div className="mt-14 text-center">
+    <section className="pb-20">
+      <HeroImage>
+        <div className="mx-auto max-w-3xl text-center">
           <Reveal>
-            <h1 className="text-4xl font-medium tracking-tight sm:text-6xl">
+            <h1 className="text-4xl font-medium tracking-tight text-primary-foreground drop-shadow-[0_2px_20px_rgba(0,0,0,0.35)] sm:text-6xl">
               See every design. On your shoes.
             </h1>
           </Reveal>
           <Reveal delay={100}>
-            <p className="mx-auto mt-5 max-w-md text-muted-foreground">
+            <p className="mx-auto mt-5 max-w-md text-primary-foreground/85">
               Each piece is 3D-printed to order and clips onto the laces. Snap it on, swap it
               out, no glue.
             </p>
@@ -55,15 +52,16 @@ function Home() {
               </Link>
               <Link
                 to="/custom"
-                className="text-sm text-muted-foreground underline-offset-4 transition-colors duration-150 hover:text-foreground hover:underline"
+                className="text-sm text-primary-foreground/80 underline-offset-4 transition-colors duration-150 hover:text-primary-foreground hover:underline"
               >
                 Build Your Own
               </Link>
             </div>
           </Reveal>
         </div>
-      </div>
+      </HeroImage>
     </section>
+
 
     <Triptych
       panels={[
