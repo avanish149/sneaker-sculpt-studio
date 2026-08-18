@@ -51,7 +51,7 @@ function Shop() {
                         {c.season}
                       </p>
                       <h2 className="story-serif mt-4 text-4xl sm:text-5xl">{c.headline}</h2>
-                      <p className="story-drop mt-6 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
+                      <p className="story-body mt-5 max-w-2xl text-muted-foreground">
                         {c.story}
                       </p>
                     </header>
@@ -63,7 +63,7 @@ function Shop() {
                       const line = lines.find((l) => l.id === d.id);
                       return (
                         <Reveal key={d.id} delay={i * 60}>
-                          <div>
+                          <div className="group">
                             <button
                               onClick={() => setPinned(idx)}
                               className="w-full text-left transition-transform duration-200 ease-out hover:-translate-y-1"
@@ -92,6 +92,14 @@ function Shop() {
                                     (d.status === "sold" ? "opacity-40 grayscale" : "")
                                   }
                                 />
+                                <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 bg-card/92 p-5 opacity-0 backdrop-blur-sm transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                                  <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                                    {d.storyTitle}
+                                  </p>
+                                  <p className="story-body mt-2 text-sm text-foreground/80">
+                                    {d.story}
+                                  </p>
+                                </div>
                               </div>
                               <p
                                 className={
@@ -109,11 +117,8 @@ function Shop() {
                                   {d.status === "sold" ? "Sold out" : d.price}
                                 </span>
                               </div>
-                              <h3 className="story-serif mt-4 text-2xl">{d.storyTitle}</h3>
-                              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                                {d.story}
-                              </p>
                             </button>
+
 
                             {line && d.status !== "sold" ? (
                               <div className="mt-4 flex w-full items-center justify-between rounded-md border border-border px-2 py-1.5">
