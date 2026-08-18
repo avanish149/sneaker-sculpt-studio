@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "@tanstack/react-router";
 import { Menu, X, ChevronRight, ChevronLeft } from "lucide-react";
+import { COLLECTIONS } from "@/lib/designs";
 
 const MAIN = [
   { to: "/", label: "Home" },
@@ -20,7 +21,7 @@ const SUB = [
 
 export function SlideOutNav() {
   const [open, setOpen] = useState(false);
-  const [panel, setPanel] = useState<"main" | "studio">("main");
+  const [panel, setPanel] = useState<"main" | "studio" | "shop">("main");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
@@ -57,7 +58,7 @@ export function SlideOutNav() {
       >
         <div className="flex items-center justify-between border-b border-border px-6 py-5">
           <span className="text-sm uppercase tracking-[0.24em] text-muted-foreground">
-            {panel === "main" ? "Menu" : "Studio"}
+            {panel === "main" ? "Menu" : panel === "shop" ? "Shop" : "Studio"}
           </span>
           <button
             type="button"
@@ -75,18 +76,30 @@ export function SlideOutNav() {
               panel === "main" ? "translate-x-0" : "-translate-x-full"
             }`}
           >
-            {MAIN.map((l) => (
-              <Link
-                key={l.label}
-                to={l.to}
-                onClick={close}
-                activeOptions={{ exact: l.to === "/" }}
-                className="py-3 text-2xl tracking-tight text-muted-foreground transition-colors duration-150 hover:text-foreground"
-                activeProps={{ className: "!text-foreground" }}
-              >
-                {l.label}
-              </Link>
-            ))}
+            {MAIN.map((l) =>
+              l.to === "/shop" ? (
+                <button
+                  key={l.label}
+                  type="button"
+                  onClick={() => setPanel("shop")}
+                  className="flex items-center justify-between py-3 text-left text-2xl tracking-tight text-muted-foreground transition-colors duration-150 hover:text-foreground"
+                >
+                  Shop
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              ) : (
+                <Link
+                  key={l.label}
+                  to={l.to}
+                  onClick={close}
+                  activeOptions={{ exact: l.to === "/" }}
+                  className="py-3 text-2xl tracking-tight text-muted-foreground transition-colors duration-150 hover:text-foreground"
+                  activeProps={{ className: "!text-foreground" }}
+                >
+                  {l.label}
+                </Link>
+              ),
+            )}
             <button
               type="button"
               onClick={() => setPanel("studio")}
@@ -95,6 +108,44 @@ export function SlideOutNav() {
               Studio
               <ChevronRight className="h-5 w-5" />
             </button>
+          </nav>
+
+          <nav
+            className={`absolute inset-0 flex flex-col gap-1 overflow-y-auto px-6 py-4 transition-transform duration-300 ease-out ${
+              panel === "shop" ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
+            <button
+              type="button"
+              onClick={() => setPanel("main")}
+              className="mb-3 flex items-center gap-2 self-start text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <ChevronLeft className="h-4 w-4" /> Back
+            </button>
+            <Link
+              to="/shop"
+              onClick={close}
+              className="py-3 text-2xl tracking-tight text-muted-foreground transition-colors duration-150 hover:text-foreground"
+            >
+              All pieces
+            </Link>
+            <p className="mt-3 border-t border-border pt-4 text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
+              Collections
+            </p>
+            {COLLECTIONS.map((c) => (
+              <Link
+                key={c.id}
+                to="/shop"
+                hash={c.id}
+                onClick={close}
+                className="flex items-baseline justify-between py-3 text-2xl tracking-tight text-muted-foreground transition-colors duration-150 hover:text-foreground"
+              >
+                {c.name}
+                <span className="text-[10px] uppercase tracking-[0.2em]">
+                  {c.headline}
+                </span>
+              </Link>
+            ))}
           </nav>
 
           <nav
