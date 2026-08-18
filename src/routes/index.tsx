@@ -62,6 +62,36 @@ function Home() {
       </HeroImage>
     </section>
 
+    <section className="px-5 pb-20 md:px-10">
+      <div className="mx-auto max-w-4xl">
+        <Reveal>
+          <p className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
+            The story
+          </p>
+        </Reveal>
+        <Reveal delay={80}>
+          <h2 className="story-serif mt-6 text-4xl leading-[1.05] sm:text-6xl">
+            We started by breaking a shoe we loved.
+          </h2>
+        </Reveal>
+        <Reveal delay={140}>
+          <p className="story-drop mt-8 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
+            The first attachment was glued on, ruined a good pair, and looked incredible for about
+            a week. Everything since has been an argument with that mistake: how do you add
+            something sculptural to a shoe without taking the shoe away from its owner? The answer
+            turned out to be geometry — a clip that flexes once and holds, printed the same week
+            you order it, off again in a second.
+          </p>
+        </Reveal>
+        <Reveal delay={200}>
+          <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
+            Now every piece we make gets a story of its own: where the shape came from, what it
+            took to print, and how it wears. Read them in the shop — they're the closest thing we
+            have to a size guide.
+          </p>
+        </Reveal>
+      </div>
+    </section>
 
     <Triptych
       panels={[
@@ -71,5 +101,6 @@ function Home() {
       ]}
     />
     </>
+
   );
 }
