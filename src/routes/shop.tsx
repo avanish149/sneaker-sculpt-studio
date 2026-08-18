@@ -89,11 +89,11 @@ function Shop() {
 
         <div className="mt-14 grid gap-14 lg:grid-cols-[1fr_360px]">
           <div className="space-y-24">
-            {shown.map((c, ci) => {
+            {shown.map((c) => {
               const items = DESIGNS.filter((d) => d.collection === c.id);
               if (items.length === 0) return null;
               return (
-                <div key={c.id} id={c.id}>
+                <div key={c.id} id={c.id} className="scroll-mt-36">
                   <Reveal>
                     <header className="relative border-t border-border pt-8">
                       <span
