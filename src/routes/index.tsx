@@ -66,30 +66,27 @@ function Home() {
       <div className="mx-auto max-w-4xl">
         <Reveal>
           <p className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
-            The story
+            What we make
           </p>
         </Reveal>
         <Reveal delay={80}>
-          <h2 className="story-serif mt-6 text-4xl leading-[1.05] sm:text-6xl">
-            We started by breaking a shoe we loved.
+          <h2 className="story-serif mt-6 text-4xl leading-[1.05] sm:text-5xl">
+            Sculptural clips for the front of a shoe.
           </h2>
         </Reveal>
         <Reveal delay={140}>
-          <p className="story-drop mt-8 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
-            The first attachment was glued on, ruined a good pair, and looked incredible for about
-            a week. Everything since has been an argument with that mistake: how do you add
-            something sculptural to a shoe without taking the shoe away from its owner? The answer
-            turned out to be geometry — a clip that flexes once and holds, printed the same week
-            you order it, off again in a second.
+          <p className="story-body mt-7 max-w-2xl text-muted-foreground">
+            Each piece runs along the laces down to the tongue and holds with geometry alone — no
+            glue, no stitching, nothing permanent. Printed to order, on in a second, off just as
+            fast.
           </p>
         </Reveal>
         <Reveal delay={200}>
-          <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
-            Now every piece we make gets a story of its own: where the shape came from, what it
-            took to print, and how it wears. Read them in the shop — they're the closest thing we
-            have to a size guide.
+          <p className="story-body mt-4 max-w-2xl text-muted-foreground">
+            Hover any piece in the shop to read what it's made of and how it wears.
           </p>
         </Reveal>
+
       </div>
     </section>
 
