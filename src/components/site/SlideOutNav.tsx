@@ -142,7 +142,7 @@ export function SlideOutNav() {
               >
                 {c.name}
                 <span className="text-[10px] uppercase tracking-[0.2em]">
-                  {c.headline}
+                  0{COLLECTIONS.indexOf(c) + 1}
                 </span>
               </Link>
             ))}
