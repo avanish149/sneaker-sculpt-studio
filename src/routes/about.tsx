@@ -34,25 +34,18 @@ function About() {
       <section className="px-5 pb-4 pt-12 md:px-10">
         <div className="mx-auto max-w-6xl">
           <Reveal>
-            <h1 className="story-serif max-w-3xl text-5xl leading-[1.03] sm:text-7xl">
+            <h1 className="story-serif max-w-3xl text-5xl leading-[1.05] sm:text-6xl">
               Small parts, made for one pair.
             </h1>
           </Reveal>
           <Reveal delay={100}>
-            <p className="story-drop mt-10 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
-              NAME began in a rented room with one printer, a box of failed clips, and a stubborn
-              idea: that the most interesting thing about a shoe should be something you can take
-              off. We spent a year learning that a millimetre is the difference between a piece
-              that holds all day and one that ends up in a pocket by lunch.
+            <p className="story-body mt-8 max-w-2xl text-muted-foreground">
+              NAME is a small studio printing clip-on attachments for the front of a shoe. Nothing
+              is mass produced: files are drawn, printed, tested on a real shoe and sent out,
+              usually within the same week you order.
             </p>
           </Reveal>
-          <Reveal delay={160}>
-            <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
-              Nothing here is mass produced. Files are drawn, printed, tested on a real shoe, and
-              sent out — usually within the same week you ordered. What follows is how we think
-              about fit, print, material and the room it all happens in.
-            </p>
-          </Reveal>
+
         </div>
       </section>
 
