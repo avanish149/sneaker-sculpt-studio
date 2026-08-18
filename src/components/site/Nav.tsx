@@ -20,19 +20,19 @@ export function Nav() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur">
-      <nav className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 py-4 md:px-10">
-        <div className="flex items-center">
-          <SlideOutNav />
+      <nav className="flex items-center px-4 py-4 md:px-6">
+        <SlideOutNav />
+
+        <div className="flex flex-1 justify-center">
+          <Link
+            to="/"
+            className="text-sm font-medium uppercase tracking-[0.32em]"
+          >
+            NAME
+          </Link>
         </div>
 
-        <Link
-          to="/"
-          className="justify-self-center text-sm font-medium uppercase tracking-[0.32em]"
-        >
-          NAME
-        </Link>
-
-        <div className="flex items-center justify-end gap-1">
+        <div className="flex items-center gap-1">
           <button
             type="button"
             aria-label={search ? "Close search" : "Open search"}
