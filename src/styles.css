@@ -32,35 +32,37 @@
   --font-sans: "Archivo", system-ui, sans-serif;
   --font-mono: "Archivo", system-ui, sans-serif;
   --font-display: "Archivo", system-ui, sans-serif;
-  --font-story: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-story: "Fraunces", "Iowan Old Style", Georgia, serif;
 }
 
 :root {
   --radius: 6px;
-  --background: oklch(0.958 0.012 84);
-  --foreground: oklch(0.24 0.014 62);
-  --surface: oklch(0.932 0.015 84);
-  --card: oklch(0.945 0.013 84);
-  --card-foreground: oklch(0.24 0.014 62);
-  --popover: oklch(0.968 0.012 84);
-  --popover-foreground: oklch(0.24 0.014 62);
-  /* single accent: electric blue */
-  --primary: oklch(0.55 0.2 258);
-  --primary-foreground: oklch(0.975 0.01 84);
-  --secondary: oklch(0.915 0.016 84);
-  --secondary-foreground: oklch(0.28 0.014 62);
-  --muted: oklch(0.915 0.016 84);
-  --muted-foreground: oklch(0.5 0.014 72);
-  --accent: oklch(0.55 0.2 258);
-  --accent-foreground: oklch(0.975 0.01 84);
-  --destructive: oklch(0.58 0.21 27);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.875 0.016 82);
-  --input: oklch(0.875 0.016 82);
-  --ring: oklch(0.55 0.2 258);
+  /* warm, night-light friendly paper tones */
+  --background: oklch(0.945 0.028 78);
+  --foreground: oklch(0.28 0.018 60);
+  --surface: oklch(0.918 0.032 78);
+  --card: oklch(0.932 0.03 78);
+  --card-foreground: oklch(0.28 0.018 60);
+  --popover: oklch(0.955 0.026 78);
+  --popover-foreground: oklch(0.28 0.018 60);
+  /* single accent: warm ink */
+  --primary: oklch(0.42 0.055 52);
+  --primary-foreground: oklch(0.965 0.024 78);
+  --secondary: oklch(0.9 0.032 78);
+  --secondary-foreground: oklch(0.3 0.018 60);
+  --muted: oklch(0.9 0.032 78);
+  --muted-foreground: oklch(0.5 0.022 66);
+  --accent: oklch(0.42 0.055 52);
+  --accent-foreground: oklch(0.965 0.024 78);
+  --destructive: oklch(0.55 0.16 32);
+  --destructive-foreground: oklch(0.98 0.01 78);
+  --border: oklch(0.858 0.03 76);
+  --input: oklch(0.858 0.03 76);
+  --ring: oklch(0.42 0.055 52);
 
 
 }
+
 
 
 @layer base {
