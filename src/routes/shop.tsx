@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Minus, Plus } from "lucide-react";
 import { DESIGNS, COLLECTIONS } from "@/lib/designs";
 import { Reveal } from "@/components/site/primitives";
@@ -8,7 +8,7 @@ import { useCart } from "@/lib/cart";
 
 const title = "Shop — NAME Clip-On Shoe Attachments";
 const description =
-  "Browse the NAME collections — Winter, Chrome and Raw. 3D-printed clip-on shoe attachments, printed to order.";
+  "Browse NAME by season — Season 0, 1 and 2. 3D-printed clip-on shoe attachments, printed to order.";
 
 export const Route = createFileRoute("/shop")({
   head: () => ({
@@ -26,31 +26,88 @@ export const Route = createFileRoute("/shop")({
 
 function Shop() {
   const [pinned, setPinned] = useState<number | null>(null);
+  const [season, setSeason] = useState<string>("all");
   const { add, setOpen, lines, setQty } = useCart();
+
+  useEffect(() => {
+    const sync = () => {
+      const h = window.location.hash.replace("#", "");
+      if (COLLECTIONS.some((c) => c.id === h)) {
+        setSeason(h);
+        document.getElementById(h)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+    sync();
+    window.addEventListener("hashchange", sync);
+    return () => window.removeEventListener("hashchange", sync);
+  }, []);
+
+  const shown = COLLECTIONS.filter((c) => season === "all" || c.id === season);
+  const count = DESIGNS.filter(
+    (d) => season === "all" || d.collection === season,
+  ).length;
 
   return (
     <section className="px-5 py-16 md:px-10">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <h1 className="story-serif text-5xl sm:text-7xl">Collections</h1>
+          <p className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
+            Shop — {count} piece{count === 1 ? "" : "s"} in view
+          </p>
+          <h1 className="story-serif mt-4 text-5xl sm:text-7xl">Seasons</h1>
           <p className="mt-5 max-w-lg text-muted-foreground">
-            Three drops, three ways of finishing a print. Select a piece to preview it on the shoe.
+            Each season is a way of finishing a print. Select a piece to preview it on the shoe.
           </p>
         </Reveal>
 
+        <div className="sticky top-16 z-30 -mx-5 mt-10 border-y border-border bg-background/85 px-5 py-3 backdrop-blur md:-mx-10 md:px-10">
+          <div className="flex gap-2 overflow-x-auto">
+            {[{ id: "all", name: "All" }, ...COLLECTIONS].map((c) => (
+              <button
+                key={c.id}
+                type="button"
+                onClick={() => {
+                  setSeason(c.id);
+                  if (c.id !== "all") {
+                    document
+                      .getElementById(c.id)
+                      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                }}
+                className={
+                  "shrink-0 rounded-full border px-4 py-2 text-[11px] uppercase tracking-[0.2em] transition-colors " +
+                  (season === c.id
+                    ? "border-foreground bg-foreground text-background"
+                    : "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground")
+                }
+              >
+                {c.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="mt-14 grid gap-14 lg:grid-cols-[1fr_360px]">
           <div className="space-y-24">
-            {COLLECTIONS.map((c) => {
+            {shown.map((c) => {
               const items = DESIGNS.filter((d) => d.collection === c.id);
               if (items.length === 0) return null;
               return (
-                <div key={c.id} id={c.id}>
+                <div key={c.id} id={c.id} className="scroll-mt-36">
                   <Reveal>
-                    <header className="border-t border-border pt-8">
+                    <header className="relative border-t border-border pt-8">
+                      <span
+                        aria-hidden
+                        className="pointer-events-none absolute -top-2 right-0 select-none text-7xl font-light leading-none text-foreground/[0.06] sm:text-8xl"
+                      >
+                        0{COLLECTIONS.indexOf(c) + 1}
+                      </span>
                       <p className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
                         {c.season}
                       </p>
-                      <h2 className="story-serif mt-4 text-4xl sm:text-5xl">{c.headline}</h2>
+                      <h2 className="story-serif mt-4 text-4xl sm:text-5xl">
+                        {c.name}. <span className="text-muted-foreground">{c.headline}</span>
+                      </h2>
                       <p className="story-body mt-5 max-w-2xl text-muted-foreground">
                         {c.story}
                       </p>
