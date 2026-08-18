@@ -34,7 +34,7 @@ export const COLLECTIONS: Collection[] = [
     season: "DROP 01 — COLD SEASON",
     headline: "Made for grey light.",
     story:
-      "Winter started as a mistake. A print left overnight in an unheated studio came out matte, dense, a little frostbitten at the edges — and it looked better than anything we had made on purpose. The pieces here keep that accident: thick shells, blunt spikes, surfaces that read like ice under a streetlamp. They are built for the months when a shoe is the only colour you are wearing.",
+      "Matte, dense finishes with blunt edges. Thick shells built for grey light and cold months.",
   },
   {
     id: "chrome",
@@ -42,7 +42,7 @@ export const COLLECTIONS: Collection[] = [
     season: "DROP 02 — MIRROR SERIES",
     headline: "Wear the reflection.",
     story:
-      "Chrome is the loud one. Every piece is polished until the room shows up in it — pavement, headlights, the person walking next to you. We spent four months learning how to print a curve smooth enough to lie about being metal. These are for the nights you want to be noticed from the ankles down.",
+      "Polished until the room shows up in it. Smooth mirrored curves for nights out.",
   },
   {
     id: "raw",
@@ -50,7 +50,7 @@ export const COLLECTIONS: Collection[] = [
     season: "DROP 03 — UNFINISHED",
     headline: "Left exactly as printed.",
     story:
-      "No polishing, no coating, no hiding the layers. Raw pieces come off the plate, get a clip test, and ship. You can count the print lines with a fingernail. It is the most honest thing we make: an object that tells you exactly how it was born, and wears its age faster than anything else in the collection.",
+      "Straight off the print plate. Visible layer lines, no coating, no polishing.",
   },
 ];
 
@@ -65,9 +65,9 @@ export const DESIGNS: Design[] = [
     img: d1,
     size: 130,
     collection: "chrome",
-    storyTitle: "The first one that held.",
+    storyTitle: "Flexible rib profile",
     story:
-      "Spike 01 was the eleventh attempt and the first that survived a full day of walking. Modelled from a sketch of a rib cage, thinned until it flexed, then thickened again where the laces pull hardest. It is still the piece we hand to people who have never worn one.",
+      "Rib-cage geometry, thinned to flex and reinforced where the laces pull hardest. Our most forgiving fit.",
   },
   {
     id: "droplet",
@@ -79,9 +79,9 @@ export const DESIGNS: Design[] = [
     img: d2,
     size: 120,
     collection: "chrome",
-    storyTitle: "Water, stopped mid-fall.",
+    storyTitle: "Hand-polished resin",
     story:
-      "We photographed rain landing on a windshield for two hours and picked one frame. Droplet is that frame, printed in resin and sanded through six grits until the highlight runs unbroken across the whole body. Quiet from a distance, impossible to ignore up close.",
+      "Resin sanded through six grits so the highlight runs unbroken. Quiet from afar, sharp up close.",
   },
   {
     id: "carapace",
@@ -94,9 +94,9 @@ export const DESIGNS: Design[] = [
     size: 150,
     status: "sold",
     collection: "winter",
-    storyTitle: "Armour for a soft object.",
+    storyTitle: "Segmented lace-line shell",
     story:
-      "A shoe is fabric and foam pretending to be tough. Carapace is the correction — a segmented shell that plates the lace line like an insect's back and moves with every step instead of fighting it. Fifty were printed. All fifty are gone.",
+      "A segmented shell that plates the lace line and flexes with every step. Limited run of fifty.",
   },
   {
     id: "halo",
@@ -109,9 +109,9 @@ export const DESIGNS: Design[] = [
     size: 135,
     status: "soon",
     collection: "winter",
-    storyTitle: "A ring that catches streetlight.",
+    storyTitle: "Steel-filled halo",
     story:
-      "Steel-filled filament makes Halo heavier than it looks and colder than it should be. It sits above the tongue like a small orbit, and in low light it does the only trick we ever wanted from a printed part: it disappears, then flashes.",
+      "Steel-filled and heavier than it looks. Sits above the tongue and catches low light.",
   },
   {
     id: "fin",
@@ -123,8 +123,8 @@ export const DESIGNS: Design[] = [
     img: d5,
     size: 115,
     collection: "raw",
-    storyTitle: "Built in one sitting.",
+    storyTitle: "Unfinished raw nylon",
     story:
-      "Fin was drawn, printed and worn out of the studio inside a single evening. Nothing about it has been smoothed since. Every layer line is where the machine left it, and the edge sharpens slightly with wear — the only piece we make that gets more aggressive over time.",
+      "Unsmoothed nylon with every layer line intact. The edge sharpens slightly with wear.",
   },
 ];
