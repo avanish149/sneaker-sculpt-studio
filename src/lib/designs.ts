@@ -29,25 +29,25 @@ export type Collection = {
 
 export const COLLECTIONS: Collection[] = [
   {
-    id: "winter",
-    name: "Winter Collection",
-    season: "DROP 01 — COLD SEASON",
+    id: "season-0",
+    name: "Season 0",
+    season: "SEASON 0 — COLD START",
     headline: "Made for grey light.",
     story:
       "Matte, dense finishes with blunt edges. Thick shells built for grey light and cold months.",
   },
   {
-    id: "chrome",
-    name: "Chrome Collection",
-    season: "DROP 02 — MIRROR SERIES",
+    id: "season-1",
+    name: "Season 1",
+    season: "SEASON 1 — MIRROR SERIES",
     headline: "Wear the reflection.",
     story:
       "Polished until the room shows up in it. Smooth mirrored curves for nights out.",
   },
   {
-    id: "raw",
-    name: "Raw Collection",
-    season: "DROP 03 — UNFINISHED",
+    id: "season-2",
+    name: "Season 2",
+    season: "SEASON 2 — UNFINISHED",
     headline: "Left exactly as printed.",
     story:
       "Straight off the print plate. Visible layer lines, no coating, no polishing.",
@@ -64,7 +64,7 @@ export const DESIGNS: Design[] = [
     material: "Chrome nylon",
     img: d1,
     size: 130,
-    collection: "chrome",
+    collection: "season-1",
     storyTitle: "Flexible rib profile",
     story:
       "Rib-cage geometry, thinned to flex and reinforced where the laces pull hardest. Our most forgiving fit.",
@@ -78,7 +78,7 @@ export const DESIGNS: Design[] = [
     material: "Polished resin",
     img: d2,
     size: 120,
-    collection: "chrome",
+    collection: "season-1",
     storyTitle: "Hand-polished resin",
     story:
       "Resin sanded through six grits so the highlight runs unbroken. Quiet from afar, sharp up close.",
@@ -93,7 +93,7 @@ export const DESIGNS: Design[] = [
     img: d3,
     size: 150,
     status: "sold",
-    collection: "winter",
+    collection: "season-0",
     storyTitle: "Segmented lace-line shell",
     story:
       "A segmented shell that plates the lace line and flexes with every step. Limited run of fifty.",
@@ -108,7 +108,7 @@ export const DESIGNS: Design[] = [
     img: d4,
     size: 135,
     status: "soon",
-    collection: "winter",
+    collection: "season-0",
     storyTitle: "Steel-filled halo",
     story:
       "Steel-filled and heavier than it looks. Sits above the tongue and catches low light.",
@@ -122,7 +122,7 @@ export const DESIGNS: Design[] = [
     material: "Raw nylon",
     img: d5,
     size: 115,
-    collection: "raw",
+    collection: "season-2",
     storyTitle: "Unfinished raw nylon",
     story:
       "Unsmoothed nylon with every layer line intact. The edge sharpens slightly with wear.",
