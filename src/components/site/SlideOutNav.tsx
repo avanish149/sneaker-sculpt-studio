@@ -141,7 +141,7 @@ export function SlideOutNav() {
                           <Link
                             key={s.label}
                             to={s.to}
-                            hash={s.hash}
+                            {...(s.hash ? { hash: s.hash } : {})}
                             onClick={close}
                             tabIndex={isOpen ? 0 : -1}
                             className="flex items-baseline justify-between py-2 text-base tracking-tight text-muted-foreground transition-colors duration-150 hover:text-foreground"
