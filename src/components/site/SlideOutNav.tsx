@@ -14,11 +14,10 @@ const MAIN: Item[] = [
     label: "Shop",
     sub: [
       { to: "/shop", label: "All pieces" },
-      ...COLLECTIONS.map((c, i) => ({
+      ...COLLECTIONS.map((c) => ({
         to: "/shop",
         hash: c.id,
         label: c.name,
-        note: `0${i + 1}`,
       })),
     ],
   },

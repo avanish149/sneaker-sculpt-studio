@@ -94,12 +94,6 @@ function Shop() {
                 <div key={c.id} id={c.id} className="scroll-mt-36">
                   <Reveal>
                     <header className="relative border-t border-border pt-8">
-                      <span
-                        aria-hidden
-                        className="pointer-events-none absolute -top-2 right-0 select-none text-7xl font-light leading-none text-foreground/[0.06] sm:text-8xl"
-                      >
-                        0{COLLECTIONS.indexOf(c) + 1}
-                      </span>
                       <p className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
                         {c.season}
                       </p>
