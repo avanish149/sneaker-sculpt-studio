@@ -74,15 +74,17 @@ export function ShoeViewer({
             height={1024}
             className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.18)]"
           />
-          <img
-            key={`${design.id}-${angle}`}
-            src={design.img}
-            alt={design.label}
-            width={512}
-            height={512}
-            className="attach-drop pointer-events-none absolute"
-            style={{ left: view.x, top: view.y, width: design.size }}
-          />
+          {attached && (
+            <img
+              key={`${design.id}-${angle}`}
+              src={design.img}
+              alt={design.label}
+              width={512}
+              height={512}
+              className="attach-drop pointer-events-none absolute"
+              style={{ left: view.x, top: view.y, width: design.size }}
+            />
+          )}
           <div className="pointer-events-none absolute inset-x-0 bottom-3 text-center text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
             Drag to rotate
           </div>
