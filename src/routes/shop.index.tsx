@@ -10,7 +10,7 @@ const title = "Shop — NAME Clip-On Shoe Attachments";
 const description =
   "Browse NAME by season — Season 0, 1 and 2. 3D-printed clip-on shoe attachments, printed to order.";
 
-export const Route = createFileRoute("/shop")({
+export const Route = createFileRoute("/shop/")({
   head: () => ({
     meta: [
       { title },
