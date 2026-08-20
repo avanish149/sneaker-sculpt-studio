@@ -15,6 +15,7 @@ import { Route as CommunityRouteImport } from './routes/community'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CustomRouteImport } from './routes/custom'
 import { Route as ShopIndexRouteImport } from './routes/shop.index'
+import { Route as ShopIdRouteImport } from './routes/shop.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,11 @@ const ShopIndexRoute = ShopIndexRouteImport.update({
   path: '/shop/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopIdRoute = ShopIdRouteImport.update({
+  id: '/shop/$id',
+  path: '/shop/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/community': typeof CommunityRoute
   '/contact': typeof ContactRoute
   '/custom': typeof CustomRoute
+  '/shop/$id': typeof ShopIdRoute
   '/shop/': typeof ShopIndexRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/community': typeof CommunityRoute
   '/contact': typeof ContactRoute
   '/custom': typeof CustomRoute
+  '/shop/$id': typeof ShopIdRoute
   '/shop': typeof ShopIndexRoute
 }
 export interface FileRoutesById {
@@ -70,13 +78,28 @@ export interface FileRoutesById {
   '/community': typeof CommunityRoute
   '/contact': typeof ContactRoute
   '/custom': typeof CustomRoute
+  '/shop/$id': typeof ShopIdRoute
   '/shop/': typeof ShopIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/community' | '/contact' | '/custom' | '/shop/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/community'
+    | '/contact'
+    | '/custom'
+    | '/shop/$id'
+    | '/shop/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/community' | '/contact' | '/custom' | '/shop'
+  to:
+    | '/'
+    | '/about'
+    | '/community'
+    | '/contact'
+    | '/custom'
+    | '/shop/$id'
+    | '/shop'
   id:
     | '__root__'
     | '/'
@@ -84,6 +107,7 @@ export interface FileRouteTypes {
     | '/community'
     | '/contact'
     | '/custom'
+    | '/shop/$id'
     | '/shop/'
   fileRoutesById: FileRoutesById
 }
@@ -93,6 +117,7 @@ export interface RootRouteChildren {
   CommunityRoute: typeof CommunityRoute
   ContactRoute: typeof ContactRoute
   CustomRoute: typeof CustomRoute
+  ShopIdRoute: typeof ShopIdRoute
   ShopIndexRoute: typeof ShopIndexRoute
 }
 
@@ -140,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop/$id': {
+      id: '/shop/$id'
+      path: '/shop/$id'
+      fullPath: '/shop/$id'
+      preLoaderRoute: typeof ShopIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -149,6 +181,7 @@ const rootRouteChildren: RootRouteChildren = {
   CommunityRoute: CommunityRoute,
   ContactRoute: ContactRoute,
   CustomRoute: CustomRoute,
+  ShopIdRoute: ShopIdRoute,
   ShopIndexRoute: ShopIndexRoute,
 }
 export const routeTree = rootRouteImport
