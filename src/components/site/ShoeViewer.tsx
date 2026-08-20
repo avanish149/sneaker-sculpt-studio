@@ -93,21 +93,23 @@ export function ShoeViewer({
         <RotateButton dir={1} onClick={() => rotate(1)} />
       </div>
 
-      <div className="mt-6 flex items-center justify-center gap-2">
-        {DESIGNS.map((d, i) => (
-          <button
-            key={d.id}
-            aria-label={d.name}
-            onClick={() => setActive(i)}
-            className={cn(
-              "h-1.5 rounded-full transition-all duration-200",
-              i === active ? "w-7 bg-primary" : "w-1.5 bg-border hover:bg-muted-foreground",
-            )}
-          />
-        ))}
-      </div>
+      {!hideDots && (
+        <div className="mt-6 flex items-center justify-center gap-2">
+          {DESIGNS.map((d, i) => (
+            <button
+              key={d.id}
+              aria-label={d.name}
+              onClick={() => setActive(i)}
+              className={cn(
+                "h-1.5 rounded-full transition-all duration-200",
+                i === active ? "w-7 bg-primary" : "w-1.5 bg-border hover:bg-muted-foreground",
+              )}
+            />
+          ))}
+        </div>
+      )}
       <p className="mt-3 text-center text-xs uppercase tracking-[0.18em] text-muted-foreground">
-        Preview mode — {design.name}
+        {caption ?? `Preview mode — ${design.name}`}
       </p>
     </div>
   );
