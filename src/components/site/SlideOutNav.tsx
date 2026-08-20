@@ -4,7 +4,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { COLLECTIONS } from "@/lib/designs";
 
-type SubItem = { to: string; hash?: string; label: string; note?: string };
+type SubItem = { to: string; hash?: string; label: string };
 type Item = { to: string; label: string; sub?: SubItem[] };
 
 const MAIN: Item[] = [
@@ -14,11 +14,10 @@ const MAIN: Item[] = [
     label: "Shop",
     sub: [
       { to: "/shop", label: "All pieces" },
-      ...COLLECTIONS.map((c, i) => ({
+      ...COLLECTIONS.map((c) => ({
         to: "/shop",
         hash: c.id,
         label: c.name,
-        note: `0${i + 1}`,
       })),
     ],
   },
@@ -147,11 +146,6 @@ export function SlideOutNav() {
                             className="flex items-baseline justify-between py-2 text-base tracking-tight text-muted-foreground transition-colors duration-150 hover:text-foreground"
                           >
                             {s.label}
-                            {s.note && (
-                              <span className="text-[10px] uppercase tracking-[0.2em]">
-                                {s.note}
-                              </span>
-                            )}
                           </Link>
                         ))}
                       </div>
