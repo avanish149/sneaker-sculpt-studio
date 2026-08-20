@@ -16,9 +16,19 @@ const ANGLES = [
 
 const HOLD = 3200;
 
-export function ShoeViewer({ pinned }: { pinned?: number | null }) {
+export function ShoeViewer({
+  pinned,
+  attached = true,
+  hideDots = false,
+  caption,
+}: {
+  pinned?: number | null;
+  attached?: boolean;
+  hideDots?: boolean;
+  caption?: string;
+}) {
   const [angle, setAngle] = useState(0);
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(pinned ?? 0);
   const drag = useRef<{ x: number; angle: number } | null>(null);
 
   useEffect(() => {
@@ -64,15 +74,17 @@ export function ShoeViewer({ pinned }: { pinned?: number | null }) {
             height={1024}
             className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.18)]"
           />
-          <img
-            key={`${design.id}-${angle}`}
-            src={design.img}
-            alt={design.label}
-            width={512}
-            height={512}
-            className="attach-drop pointer-events-none absolute"
-            style={{ left: view.x, top: view.y, width: design.size }}
-          />
+          {attached && (
+            <img
+              key={`${design.id}-${angle}`}
+              src={design.img}
+              alt={design.label}
+              width={512}
+              height={512}
+              className="attach-drop pointer-events-none absolute"
+              style={{ left: view.x, top: view.y, width: design.size }}
+            />
+          )}
           <div className="pointer-events-none absolute inset-x-0 bottom-3 text-center text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
             Drag to rotate
           </div>
@@ -81,21 +93,23 @@ export function ShoeViewer({ pinned }: { pinned?: number | null }) {
         <RotateButton dir={1} onClick={() => rotate(1)} />
       </div>
 
-      <div className="mt-6 flex items-center justify-center gap-2">
-        {DESIGNS.map((d, i) => (
-          <button
-            key={d.id}
-            aria-label={d.name}
-            onClick={() => setActive(i)}
-            className={cn(
-              "h-1.5 rounded-full transition-all duration-200",
-              i === active ? "w-7 bg-primary" : "w-1.5 bg-border hover:bg-muted-foreground",
-            )}
-          />
-        ))}
-      </div>
+      {!hideDots && (
+        <div className="mt-6 flex items-center justify-center gap-2">
+          {DESIGNS.map((d, i) => (
+            <button
+              key={d.id}
+              aria-label={d.name}
+              onClick={() => setActive(i)}
+              className={cn(
+                "h-1.5 rounded-full transition-all duration-200",
+                i === active ? "w-7 bg-primary" : "w-1.5 bg-border hover:bg-muted-foreground",
+              )}
+            />
+          ))}
+        </div>
+      )}
       <p className="mt-3 text-center text-xs uppercase tracking-[0.18em] text-muted-foreground">
-        Preview mode — {design.name}
+        {caption ?? `Preview mode — ${design.name}`}
       </p>
     </div>
   );

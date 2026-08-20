@@ -1,16 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Minus, Plus } from "lucide-react";
 import { DESIGNS, COLLECTIONS } from "@/lib/designs";
 import { Reveal } from "@/components/site/primitives";
-import { ShoeViewer } from "@/components/site/ShoeViewer";
 import { useCart } from "@/lib/cart";
 
 const title = "Shop — NAME Clip-On Shoe Attachments";
 const description =
   "Browse NAME by season — Season 0, 1 and 2. 3D-printed clip-on shoe attachments, printed to order.";
 
-export const Route = createFileRoute("/shop")({
+export const Route = createFileRoute("/shop/")({
   head: () => ({
     meta: [
       { title },
@@ -25,7 +24,6 @@ export const Route = createFileRoute("/shop")({
 });
 
 function Shop() {
-  const [pinned, setPinned] = useState<number | null>(null);
   const [season, setSeason] = useState<string>("all");
   const { add, setOpen, lines, setQty } = useCart();
 
@@ -87,7 +85,7 @@ function Shop() {
           </div>
         </div>
 
-        <div className="mt-14 grid gap-14 lg:grid-cols-[1fr_360px]">
+        <div className="mt-14">
           <div className="space-y-24">
             {shown.map((c) => {
               const items = DESIGNS.filter((d) => d.collection === c.id);
@@ -114,16 +112,16 @@ function Shop() {
                     </header>
                   </Reveal>
 
-                  <div className="mt-10 grid gap-10 sm:grid-cols-2">
+                  <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
                     {items.map((d, i) => {
-                      const idx = DESIGNS.indexOf(d);
                       const line = lines.find((l) => l.id === d.id);
                       return (
                         <Reveal key={d.id} delay={i * 60}>
                           <div className="group">
-                            <button
-                              onClick={() => setPinned(idx)}
-                              className="w-full text-left transition-transform duration-200 ease-out hover:-translate-y-1"
+                            <Link
+                              to="/shop/$id"
+                              params={{ id: d.id }}
+                              className="block w-full text-left transition-transform duration-200 ease-out hover:-translate-y-1"
                             >
                               <div className="pedestal relative aspect-square overflow-hidden rounded-xl border border-border bg-surface">
                                 {d.status && (
@@ -174,8 +172,7 @@ function Shop() {
                                   {d.status === "sold" ? "Sold out" : d.price}
                                 </span>
                               </div>
-                            </button>
-
+                            </Link>
 
                             {line && d.status !== "sold" ? (
                               <div className="mt-4 flex w-full items-center justify-between rounded-md border border-border px-2 py-1.5">
@@ -222,9 +219,6 @@ function Shop() {
             })}
           </div>
 
-          <aside className="lg:sticky lg:top-28 lg:self-start">
-            <ShoeViewer pinned={pinned} />
-          </aside>
         </div>
       </div>
     </section>
