@@ -16,9 +16,19 @@ const ANGLES = [
 
 const HOLD = 3200;
 
-export function ShoeViewer({ pinned }: { pinned?: number | null }) {
+export function ShoeViewer({
+  pinned,
+  attached = true,
+  hideDots = false,
+  caption,
+}: {
+  pinned?: number | null;
+  attached?: boolean;
+  hideDots?: boolean;
+  caption?: string;
+}) {
   const [angle, setAngle] = useState(0);
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(pinned ?? 0);
   const drag = useRef<{ x: number; angle: number } | null>(null);
 
   useEffect(() => {
